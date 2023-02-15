@@ -1,33 +1,21 @@
-//
-//  ViewController.swift
-//  familyIntroProject
-//
-//  Created by kole ervine on 2/13/23.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
     
-    //set the following variables into a array to be picked from based on sender?
-//    var brotherImage = UIImage(named: <#T##String#>)
-//    var motherImage = UIImage(named: <#T##String#>)
-//    var wifeImage = UIImage(named: <#T##String#>)
-//    var catImage = UIImage(named: <#T##String#>)
-    
-    struct FamilyMember {
-        let name: String
-        let description: String
-        let imageName: String
-        // use image extension to programatically load a different image according to name?
-    }
+    let familyMembers: [String: FamilyMember] = [
+        "mother": FamilyMember(name: "mother", imageName: "mother", description: "this is my mother"), "wife": FamilyMember(name: "wife", imageName: "wife", description: "this is my wife"), "brother": FamilyMember(name: "brother", imageName: "brother", description: "this is my brother"), "cat": FamilyMember(name: "cat", imageName: "cat", description: "this is my beloved cat")
+        ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        //image = UIImage(named: familyMember.imageName)
     }
-
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let detailViewController = segue.destination as? DetailViewController else { return }
+        
+        if let familyID = segue.identifier {
+            detailViewController.FamilyMember = familyMembers[familyID]
+        }
+    }
 }
-
