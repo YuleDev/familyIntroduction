@@ -1,13 +1,14 @@
 import UIKit
 
-struct FamilyMember {
-    let name: String
-    let imageName: String
-    let description: String
-}
+//struct FamilyMember {
+//    let name: String
+//    let imageName: String
+//    let description: String
+//}
+// the above was commented out to use the below code for the family project 2.0 on 3/16/23
 
 class DetailViewController: UIViewController {
-    var FamilyMember: FamilyMember?
+    var FamilyMember: FamilyMemberModel?
     
     @IBOutlet var FamilyMemberName: UILabel!
     @IBOutlet var FamilyMemberImage: UIImageView!
@@ -20,6 +21,7 @@ class DetailViewController: UIViewController {
         FamilyMemberName.text = FamilyMember.name
         FamilyMemberImage.image = UIImage(named: FamilyMember.imageName)
         FamilyMemberDescription.text = FamilyMember.description
-        
     }
 }
+
+// utilize pathindex for cell tapped to grab object information to fill here?

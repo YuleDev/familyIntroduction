@@ -2,8 +2,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let familyMembers: [String: FamilyMember] = [
-        "mother": FamilyMember(name: "mother", imageName: "mother", description: "this is my mother"), "wife": FamilyMember(name: "wife", imageName: "wife", description: "this is my wife"), "brother": FamilyMember(name: "brother", imageName: "brother", description: "this is my brother"), "cat": FamilyMember(name: "cat", imageName: "cat", description: "this is my beloved cat")
+    let familyMembers: [String: FamilyMemberModel] = [
+        "mother": FamilyMemberModel(name: "mother", imageName: "mother", description: "this is my mother"), "wife": FamilyMemberModel(name: "wife", imageName: "wife", description: "this is my wife"), "brother": FamilyMemberModel(name: "brother", imageName: "brother", description: "this is my brother"), "cat": FamilyMemberModel(name: "cat", imageName: "cat", description: "this is my beloved cat")
         ]
 
     override func viewDidLoad() {
@@ -19,3 +19,5 @@ class ViewController: UIViewController {
         }
     }
 }
+
+// This is not being utilized for current project 3/16
