@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         guard let detailViewController = segue.destination as? DetailViewController else { return }
         
         if let familyID = segue.identifier {
-            detailViewController.FamilyMember = familyMembers[familyID]
+            detailViewController.familyMember = familyMembers[familyID]
         }
     }
 }

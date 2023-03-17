@@ -7,22 +7,19 @@ class FamilyTableViewController: UITableViewController {
     }
     
     var family: [FamilyMemberModel] = [
-        FamilyMemberModel(name: "mom", imageName: "any", description: "this is my mom"),
-        FamilyMemberModel(name: "brother", imageName: "any", description: "this is my brother"),
-        FamilyMemberModel(name: "wife", imageName: "any", description: "this is my wife"),
-        FamilyMemberModel(name: "cat", imageName: "any", description: "this is my cat")
+        FamilyMemberModel(name: "mother", imageName: "mother", description: "this is my mother"),
+        FamilyMemberModel(name: "brother", imageName: "brother", description: "this is my brother"),
+        FamilyMemberModel(name: "wife", imageName: "wife", description: "this is my wife"),
+        FamilyMemberModel(name: "cat", imageName: "cat", description: "this is my beloved cat")
     ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return family.count
     }
-
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
@@ -37,24 +34,21 @@ class FamilyTableViewController: UITableViewController {
             return cell
         }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let index = tableView.indexPathForSelectedRow else { return }
-//
-//        print(index.)
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard tableView.indexPathForSelectedRow != nil else { return }
+        
+        let person = family[indexPath.row]
+        print("\(person)")
+        
+    }
     
-    //above or below?
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard segue.identifier == "saveUnwind" else { return }
-//
-//        let symbol = symbolTextField.text!
-//        let name = nameTextField.text!
-//        let description = descriptionTextField.text!
-//        let usage = usageTextField.text!
-//
-//        emoji = Emoji(symbol: symbol, name: name, description: description, usage: usage)
-//    }
-    
-    // use cell label to change detailed view in this file?
+    @IBSegueAction func SendingFamilyFunc(_ coder: NSCoder, sender: Any?) -> DetailViewController? {
+        guard let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) else {
+            return nil
+        }
+        
+        let person = family[indexPath.row]
+        
+        return DetailViewController(coder: coder, FamilyMemberModel: person)
+    }
 }
